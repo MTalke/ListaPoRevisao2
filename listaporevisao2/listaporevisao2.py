@@ -2,7 +2,7 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 from collections import defaultdict
-
+import math;
 
 
 if __name__ == "__main__":
@@ -88,6 +88,7 @@ if __name__ == "__main__":
         print("Escolha 8 para questao 8")
         print("Escolha 9 para questao 9")
         print("Escolha 10 para questao 10")
+        print("Escolha 11 para questao 11")
         opcao = int(input("digite a opcao: "))
 
         if (opcao == 6):
@@ -100,6 +101,8 @@ if __name__ == "__main__":
             questao9()
         elif(opcao == 10):
             questao10()
+        elif(opcao == 11):
+            questao11()
         else:
             print("Nao tem essa questao")
             Menu()
@@ -153,7 +156,8 @@ if __name__ == "__main__":
                 i = i + 1;
 
             print("Resultado", resultado)
-
+            
+            
     def questao10():
         arq = open('arquivo2.txt', 'r')  #abre o arquivo
         texto = []  #declaro um vetor
@@ -171,6 +175,19 @@ if __name__ == "__main__":
         multiplicando = multiplicaMatrizes(matriz1,matriz2)
         print("Resultado do somatorio das matrizes", multiplicando)
         arq.close()
+        
+    def questao11():
+        numero = int(input("digite um numero maior que zero: "))
+        if (numero > 0):
+            resultado= 0
+            i = 1
+            while i  <= numero:
+                expoente = i + 1
+                resultado = ((2*i)-1)/(math.pow(-2, expoente)) + resultado
+                i = i + 1;
+        
+        print("Total do somatorio = ", resultado) 
+
 
     def multiplicaMatrizes(matriz, matriz2):
         if(len(matriz) != len(matriz2) or len(matriz[0]) != len(matriz2[0])):
@@ -181,6 +198,7 @@ if __name__ == "__main__":
             result.append([])
             for j in range(len(matriz[0])):
                 multiplica = int(matriz[i][j]) * int(matriz2[i][j]) + multiplica
+#                print("multiplicacao por coluna", multiplica)
         return multiplica
     
 Menu()
